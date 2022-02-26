@@ -4,7 +4,7 @@ Undum is a game framework for building a sophisticated form of
 hypertext interactive fiction.
 
 If that means nothing to you, then let's go back a few steps. Remember
-those Choose Your Own Adventure, or Fighting Fantasy books? Where you
+those Choose Your Own Adventure, or Fighting Fantasy books? Where youu
 got to choose what your character does next? Well if you think of that
 in a web-page you have hypertext interactive fiction, or HIF. Instead
 of turning to a particular page, you click a link, and the next bit of
