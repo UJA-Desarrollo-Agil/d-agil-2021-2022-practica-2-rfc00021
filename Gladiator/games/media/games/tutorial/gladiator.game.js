@@ -29,21 +29,39 @@ undum.game.slideUpSpeed = 500
 /* The situations that the game can be in. Each has a unique ID. */
 undum.game.situations = {
     start: new undum.SimpleSituation(
-        "<h1>Starting Out with Undum</h1>\
-        <img src='media/games/tutorial/woodcut1.png' class='float_right'>\
-        <p>Welcome to the Undum tutorial. Undum is a tool for writing\
-        hypertext interactive fiction. It has some unique features\
-        and a visual design that encourages narrative games.</p>\
+        "<h1>Hogar</h1>\
+        <img src='media/games/tutorial/Coliseo-romano.jpg' height=”400” width=400”>\
+        <p>Roma, año 80 d.C, hoy es el gran día. Hoy es el día de la inauguración del Coliseo por el gran emperador Victorus. \
+        Pese haber rezado a Júpiter toda la noche no tienes entrada para \
+        el evento pero algo te dice que la fortuna te va a sonreir.   </p>\
         \
-        <p>Hypertext interactive fiction is the digital equivalent of the\
-        Choose Your Own Adventure (CYOA) books that were popular in the\
-        1980s. The story is told in chunks, and you select from a range\
-        of options to move it forward. Unlike the book form, however, the\
-        digital form gives you far more flexibility to tell rich stories\
-        and introduce more interesting game elements.</p>\
+        <p>Vistes tu toga favorita, calzas tus sandalias a la última moda romana y te dispones a salir a la calle.\
+        Tienes dos opciones: <a href='forum'>Visitar el Forum</a> en busca de suerte o ir a las <a href='incorrecta'> termas de Caracalla</a> a disfutar de un tranquilo baño.  </p>\
         \
         <p class='transient'>Click <a href='hub'>this link to\
         continue...</a></p>"
+    ),
+    forum: new undum.SimpleSituation(
+        "<h1>Forum</h1>\
+        <img src='media/games/tutorial/forum.jpg' height=”400” width=400” align='right'>\
+        <p>LLegas al forum, zona central de la ciudad de Roma, donde tienen lugar \
+        el comercio y los negocios y donde se desarrolla la vida pública y religiosa</p>\
+        \
+        <p>Un extraño señor llama tu atención y te anima a acercarte a él. Por otro lado\
+         en el mercado central ves un puesto con un cartel que indica que venden entradas \
+         pora el coliseo. Decides :<a href='forum'>Ir hacia el señór</a> en busca de suerte o ir a las <a href='incorrecta'> termas de Caracalla</a> a disfutar de un tranquilo baño.  </p>\
+        \
+        <p class='transient'>Click <a href='hub'>this link to\
+        continue...</a></p>"
+    ),
+    incorrecta: new undum.SimpleSituation(
+        "<h1>Termas de Caracalla</h1>\
+        <img src='media/games/tutorial/termas.png' height=”400” width=400” align='right'>\
+        <p>LLegas a las termas,te das un baño. La relajación es tanta que te quedas dormido \
+        Cuando te despiertas, con la piel arrugada, escuchas mucho alborto que proviene de la calle.\
+        Sales a comprobar a que se debe y el ruido procede del coliseo. Has dormido tanto que te has perdido el gran evento. Fin del Juego</p>\
+        \
+       "
     ),
 
     // NB: The 'hub' situation which is the main list of topics, is
