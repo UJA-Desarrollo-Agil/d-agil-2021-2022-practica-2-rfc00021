@@ -49,10 +49,9 @@ undum.game.situations = {
         \
         <p>Un extraño señor llama tu atención y te anima a acercarte a él. Por otro lado\
          en el mercado central ves un puesto con un cartel que indica que venden entradas \
-         pora el coliseo. Decides :<a href='forum'>Ir hacia el señór</a> en busca de suerte o ir a las <a href='incorrecta'> termas de Caracalla</a> a disfutar de un tranquilo baño.  </p>\
+         para el coliseo. Decides :<a href='senior'>Ir hacia el señór</a> en busca de suerte o <a href='mercado'> ir al mercado </a> a comprar una entrada.  </p>\
         \
-        <p class='transient'>Click <a href='hub'>this link to\
-        continue...</a></p>"
+      "
     ),
     incorrecta: new undum.SimpleSituation(
         "<h1>Termas de Caracalla</h1>\
@@ -63,6 +62,36 @@ undum.game.situations = {
         \
        "
     ),
+    senior: new undum.SimpleSituation(
+        "<h1>Señor misterioso</h1>\
+        <img src='media/games/tutorial/seniormisterioso.jfif' height=”400” width=400” >\
+        <p>Te acercas al señor</p>\
+        \<p class = 'dialogo'>- Eh amigo, ¿Quieres una entrada para el coliseo? Es totalmente gratis<\p>\
+        <p><a href='coliseo'>Coger la entrada</a><\p>\
+        <p><a href='forum'>Volver al forum</a><\p>"
+    ),
+    mercado: new undum.SimpleSituation(
+        "<h1>Mercado</h1>\
+        <img src='media/games/tutorial/mercado.jpg' height=”400” width=400” >\
+        <p>Una vez en el mercado te acercas a un puesto que dice vender entradas para el coliseo. Efectivamente,\
+        les queda justo una entrada. Rascas tu bolsillo en busca de tus ahorros mas preciados y compras la entrada.\
+        Das gracias a Júpiter por responder a tus plegarias y te diriges hacia el coliseo para asistir al evento del siglo.\
+        Cuando llegas y entregas tu entrada al amable soldado romano de la entrada, este te dice que la entrada es falsa\
+        y por tanto no puedes entrar al coliseo. Te han timado en el mercado. Pero... no toda la esperanza está perdida, aún\
+        hay tiempo para <a href='senior'>volver a hablar con el señor misterioso</a>.</p>"
+       
+    ),
+    coliseo: new undum.SimpleSituation(
+        "<h1>Coliseo</h1>\
+        <img src='media/games/tutorial/coliseo.jpg' height=”400” width=400” >\
+        <p>Una vez te has hecho con la entrada te diriges al coliseo. Le entregas tu entrada al amable\
+        soldado romano. Este te señala el camino para entrar pero observas que es distinto al que están siguiendo el resto de personas.\
+        <p><a href='celda'>Vas por el camino</a><\p>\
+        <p><a href='celda'>No vas por el camino</a><\p>"
+
+
+    ),
+   
 
     // NB: The 'hub' situation which is the main list of topics, is
     // defined wholly in the HTML file, and doesn't have an entry in
