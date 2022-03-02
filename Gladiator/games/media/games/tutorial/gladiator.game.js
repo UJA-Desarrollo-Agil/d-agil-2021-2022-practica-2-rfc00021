@@ -56,11 +56,9 @@ undum.game.situations = {
     incorrecta: new undum.SimpleSituation(
         "<h1>Termas de Caracalla</h1>\
         <img src='media/games/tutorial/termas.png' height=”400” width=400” align='right'>\
-        <p>LLegas a las termas,te das un baño. La relajación es tanta que te quedas dormido \
+        <p>LLegas a las termas,te das un baño. La relajación es tanta que te quedas dormido. \
         Cuando te despiertas, con la piel arrugada, escuchas mucho alborto que proviene de la calle.\
-        Sales a comprobar a que se debe y el ruido procede del coliseo. Has dormido tanto que te has perdido el gran evento. Fin del Juego</p>\
-        \
-       "
+        Sales a comprobar a que se debe y el ruido procede del coliseo. Has dormido tanto que te has perdido el gran evento. Fin del Juego</p>"
     ),
     senior: new undum.SimpleSituation(
         "<h1>Señor misterioso</h1>\
@@ -91,6 +89,57 @@ undum.game.situations = {
 
 
     ),
+    celda: new undum.SimpleSituation(
+        "<h1>Celda de Gladiadores </h1>\
+        <img src='media/games/tutorial/celda.jpg' height=”400” width=400” >\
+        <p>El soldado Romano no da lugar a que tomes una decisión. Es demasiado tarde. Te immovila y junto a otros soldados te arrastran hasta la celda de gladiadores.\
+        La entrada que te regaló aquel señor era una entrada para gladiadores. Tendrás que combatir en las arenas del coliseo Romano cuando sea tu turno. Tras varios minutos de desesperación viendo\
+        gladiadores salir y no volver, el guarda de la celda te llama para combatir. Eres el último.</p>\
+        <p><a href='arena'>Sales a la arena</a></p>",
+        {
+            exit: function(character, system, to) {
+                system.setQuality("espada", true);
+                system.setQuality("escudo", true);
+            }
+        }
+    ),
+    arena: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <p>De rojo se tintan las arenas del Coliseo, cuya insmensidad te sorprende. El público está eufórico. Al otro lado del coliseo, una compuerta se abre lentamente.\
+        Una bestia emerge de las profundidades y ruge hambrienta. Aprovechas la lejanía de la bestia para coger una espada y un escudo que había en el suelo.\
+        El león comienza a correr, tu quedas paralizado y en cuestión de segundos el león salta hacia ti. <a href='./skill-boost'>this action</a> </p>\
+        <p><a href='esquivar'>Esquivas</a></p>\
+        <p><a href='cubrir'>Usas el escudo para cubirte</a></p>\
+        <p><a href='atacar'>Usas la espada para atacar</a></p>",
+        
+    ),
+    esquivar: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <p>Consigues esquivarlo, sin embargo te tropiezas y caes al suelo. Rápidamente el león se da la vuelta y vuelve a cargar contra ti.\
+        <p><a href='cubrir'>Usas el escudo para cubirte</a></p>\
+        <p><a href='atacar'>Usas la espada para atacar</a></p>"
+    ),
+    cubrir: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <p>El león queda aturtido al darse de bruces con el escudo, es tu momento.\
+        <p><a href='cubrir2'>Usas el escudo para cubirte</a></p>\
+        <p><a href='atacar'>Usas la espada para atacar</a></p>"
+    ),
+    cubrir2: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <p>Bien, te has cubierto de un mosquito, pero la bestia sigue ahí.\
+        <p><a href='atacar'>Usas la espada para atacar</a></p>"
+    ),
+    atacar: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <p>Das muerte a la bestia con la espada y pones fin al combate. El público baja de las gradas y te mantea. Te llevan a hombros a tu casa.\
+        <p>FIN</p>"
+    ),
    
 
     // NB: The 'hub' situation which is the main list of topics, is
@@ -101,6 +150,7 @@ undum.game.situations = {
     // Situation type. This is a neat approach to generate text by
     // looking it up in the HTML document. For static text that makes
     // more sense than writing it longhand.
+    /*
     situations: new undum.Situation({
         enter: function(character, system, from) {
             system.write($("#s_situations").html());
@@ -482,6 +532,7 @@ undum.game.situations = {
             }
         }
     )
+    */
 };
 
 // ---------------------------------------------------------------------------
@@ -494,10 +545,10 @@ undum.game.start = "start";
  * that quality will never show up in the character bar in the UI. */
 undum.game.qualities = {
     skill: new undum.IntegerQuality(
-        "Skill", {priority:"0001", group:'stats'}
+        "skill", {priority:"0001", group:'stats'}
     ),
     stamina: new undum.NumericQuality(
-        "Stamina", {priority:"0002", group:'stats'}
+        "stamina", {priority:"0002", group:'stats'}
     ),
     luck: new undum.FudgeAdjectivesQuality( // Fudge as in the FUDGE RPG
         "<span title='Skill, Stamina and Luck are reverently borrowed from the Fighting Fantasy series of gamebooks. The words representing Luck are from the FUDGE RPG. This tooltip is illustrating that you can use any HTML in the label for a quality (in this case a span containing a title attribute).'>Luck</span>",
@@ -509,6 +560,12 @@ undum.game.qualities = {
     ),
     novice: new undum.OnOffQuality(
         "Novice", {priority:"0002", group:'progress', onDisplay:"&#10003;"}
+    ),
+    espada: new undum.OnOffQuality(
+        "Espada", {priority:"0001", group:'objeto'}
+    ),
+    escudo: new undum.OnOffQuality(
+        "Escudo", {priority:"0002", group:'objeto'}
     )
 };
 
@@ -520,7 +577,8 @@ undum.game.qualities = {
  * non-existent group. */
 undum.game.qualityGroups = {
     stats: new undum.QualityGroup(null, {priority:"0001"}),
-    progress: new undum.QualityGroup('Progress', {priority:"0002"})
+    progress: new undum.QualityGroup('Progress', {priority:"0002"}),
+    objeto: new undum.QualityGroup(null,{priority:"0003"})
 };
 
 // ---------------------------------------------------------------------------
@@ -532,5 +590,5 @@ undum.game.init = function(character, system) {
     character.qualities.luck = 0;
     character.qualities.novice = 1;
     character.qualities.inspiration = 0;
-    system.setCharacterText("<p>You are starting on an exciting journey.</p>");
+    system.setCharacterText("<p>Comienzas tu aventura</p>");
 };
