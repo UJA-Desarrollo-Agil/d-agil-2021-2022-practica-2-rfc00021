@@ -30,8 +30,8 @@ undum.game.slideUpSpeed = 500
 undum.game.situations = {
     start: new undum.SimpleSituation(
         "<h1>Hogar</h1>\
-        <img src='media/games/tutorial/Coliseo-romano.jpg' height=”400” width=400”>\
-        <p>Roma, año 80 d.C, hoy es el gran día. Hoy es el día de la inauguración del Coliseo por el gran emperador Victorus. \
+        <img class='img-situation' src='media/img/Coliseo-romano.jpg' >\
+        <p>Roma, año 80 d.C, hoy es el gran día. Hoy es el día de la inauguración del Coliseo por el gran emperador Victorius. \
         Pese haber rezado a Júpiter toda la noche no tienes entrada para \
         el evento pero algo te dice que la fortuna te va a sonreir.   </p>\
         \
@@ -40,7 +40,7 @@ undum.game.situations = {
     ),
     forum: new undum.SimpleSituation(
         "<h1>Forum</h1>\
-        <img src='media/games/tutorial/forum.jpg' height=”400” width=400”>\
+        <img class='img-situation' src='media/img/forum.jpg'>\
         <p>LLegas al forum, zona central de la ciudad de Roma, donde tienen lugar \
         el comercio y los negocios y donde se desarrolla la vida pública y religiosa</p>\
         \
@@ -52,22 +52,32 @@ undum.game.situations = {
     ),
     incorrecta: new undum.SimpleSituation(
         "<h1>Termas de Caracalla</h1>\
-        <img src='media/games/tutorial/termas.png' height=”400” width=400”>\
+        <img class='img-situation' src='media/img/termas.png'>\
         <p>LLegas a las termas,te das un baño. La relajación es tanta que te quedas dormido. \
-        Cuando te despiertas, con la piel arrugada, escuchas mucho alborto que proviene de la calle.\
-        Sales a comprobar a que se debe y el ruido procede del coliseo. Has dormido tanto que te has perdido el gran evento. Fin del Juego</p>"
+        Cuando te despiertas, con la piel arrugada, escuchas mucho alboroto que proviene de la calle.\
+        <a href='./salir' class='once'>Sales a comprobar a que se debe</a>",
+        {
+            actions:{
+                'salir': function(character,system,action){
+                    system.write("<p>Sales de las termas y alzas la vista. El ruido procede del coliseo, el espectáculo ya ha comenzado y tu ni siquiera tienes entrada. Empiezas a correr pero\
+                    al estar mojado te resbalas y te das un duro golpe en la cabeza.</p>\
+                    <h1>FIN</h1>");
+            }}
+
+        }
+
     ),
     senior: new undum.SimpleSituation(
         "<h1>Señor misterioso</h1>\
-        <img src='media/games/tutorial/seniormisterioso.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/seniormisterioso.jfif'  >\
         <p>Te acercas al señor</p>\
-        \<p class = 'dialogo'>- Eh amigo, ¿Quieres una entrada para el coliseo? Es totalmente gratis<\p>\
+        \<p class = 'dialogo'>- Eh amigo, ¿Quieres una entrada para el coliseo? Es totalmente gratis!!!<\p>\
         <p><a href='coliseo'>Coger la entrada</a><\p>\
         <p><a href='forum'>Volver al forum</a><\p>"
     ),
     mercado: new undum.SimpleSituation(
         "<h1>Mercado</h1>\
-        <img src='media/games/tutorial/mercado.jpg' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/mercado.jpg' >\
         <p>Una vez en el mercado te acercas a un puesto que dice vender entradas para el coliseo. Efectivamente,\
         les queda justo una entrada. Rascas tu bolsillo en busca de tus ahorros mas preciados y compras la entrada.\
         Das gracias a Júpiter por responder a tus plegarias y te diriges hacia el coliseo para asistir al evento del siglo.\
@@ -78,7 +88,7 @@ undum.game.situations = {
     ),
     coliseo: new undum.SimpleSituation(
         "<h1>Coliseo</h1>\
-        <img src='media/games/tutorial/coliseo.jpg' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/coliseo.jpg' >\
         <p>Una vez te has hecho con la entrada te diriges al coliseo. Le entregas tu entrada al amable\
         soldado romano. Este te señala el camino para entrar pero observas que es distinto al que están siguiendo el resto de personas.\
         <p><a href='celda'>Vas por el camino</a><\p>\
@@ -88,39 +98,56 @@ undum.game.situations = {
     ),
     celda: new undum.SimpleSituation(
         "<h1>Celda de Gladiadores </h1>\
-        <img src='media/games/tutorial/celda.jpg' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/celda.jpg' >\
         <p>El soldado Romano no da lugar a que tomes una decisión. Es demasiado tarde. Te immovila y junto a otros soldados te arrastran hasta la celda de gladiadores.\
         La entrada que te regaló aquel señor era una entrada para gladiadores. Tendrás que combatir en las arenas del coliseo Romano cuando sea tu turno. Tras varios minutos de desesperación viendo\
         gladiadores salir y no volver, el guarda de la celda te llama para combatir. Eres el último.</p>\
         <p><a href='arena'>Sales a la arena</a></p>",
-        {
-            exit: function(character, system, to) {
-                system.setQuality("espada", true);
-                system.setQuality("escudo", true);
-            }
-        }
+       // {
+         //   exit: function(character, system, to) {
+           //     system.setQuality("espada", true);
+             //   system.setQuality("escudo", true);
+           // }
+       // }
     ),
     arena: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
-        <p>De rojo se tintan las arenas del Coliseo, cuya insmensidad te sorprende. El público está eufórico. Al otro lado del coliseo, una compuerta se abre lentamente.\
-        Una bestia emerge de las profundidades y ruge hambrienta. Aprovechas la lejanía de la bestia para coger una espada y un escudo que había en el suelo.\
-        El león comienza a correr, tu quedas paralizado y en cuestión de segundos el león salta hacia ti. <a href='./skill-boost'>this action</a> </p>\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
+        <p>De rojo se tintan las arenas del Coliseo, cuya insmensidad supera toda espectativa. El público está eufórico. Al otro lado del coliseo, una compuerta se abre lentamente.\
+        Una bestia emerge de las profundidades y ruge hambrienta. Aprovechas la lejanía de la bestia para <a href = './coger-espada'>coger una espada</a> y un \
+        <a href = './coger-escudo'>escudo</a> que había en el suelo.\
+        El león comienza a correr, tu quedas paralizado y en cuestión de segundos el león salta hacia ti.</p>\
+        <p><strong>Será mejor que cojas la espada y el escudo.</strong></p>\
         <p><a href='esquivar'>Esquivas</a></p>\
         <p><a href='cubrir'>Usas el escudo para cubirte</a></p>\
         <p><a href='atacarmal'>Usas la espada para atacar</a></p>",
+        {
+            actions:{
+                'coger-espada': function(character,system,action){
+                    system.setQuality("espada", true);
+            },
+                'coger-escudo': function(character,system,action){
+                system.setQuality("escudo", true);        
+        }
+
+        },
+        exit:function(character, system, to) {
+            if(!character.qualities.escudo && !character.qualities.espada){ 
+            system.write("<p>Será mejor que cojas la espada y el escudo.</p>");}
         
+    }
+        }  
     ),
     esquivar: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
         <p>Consigues esquivarlo, sin embargo te tropiezas y caes al suelo. Rápidamente el león se da la vuelta y vuelve a cargar contra ti.</p>\
         <p><a href='cubrir2'>Usas el escudo para cubirte</a></p>\
         <p><a href='atacarbien'>Usas la espada para atacar</a></p>"
     ),
     cubrir: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
         <p>El león viene a toda velocidad y tiene tanta fuerza que te tira al suelo y te hace daño. Pierdes el escudo. La bestia carga contra ti.</p>\
         <p><a href='esquivar2'>Esquivas</a></p>\
         <p><a href='atacarmal'>Usas la espada para atacar</a></p>",
@@ -134,8 +161,9 @@ undum.game.situations = {
     ),
     atacarbien: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
-        <p>La bestia abre sus fauces e introduces la espada hasta alcanzar su corazón. Antes de morir, el león cierra la boca con todas sus fuerzas arrancando tu brazo sin piedad. Ambos caéis desplomados. Fin del Juego</p>",
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
+        <p>La bestia abre sus fauces e introduces la espada hasta alcanzar su corazón. Antes de morir, el león cierra la boca con todas sus fuerzas arrancando tu brazo sin piedad. Ambos caéis desplomados.</p>\
+        <h1>FIN</h1>",
         {
            // heading: "Fin del Juego",
             enter: function (character, system, from) {
@@ -147,8 +175,9 @@ undum.game.situations = {
     ),
     atacarmal: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
-        <p>El león viene a toda velocidad y de un bocado te arranca no solo la espada, sino todo el brazo. Desearías no haberte fiado de aquel señor misterioso. Mueres. Fin del Juego</p>",
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif'>\
+        <p>El león viene a toda velocidad y de un bocado te arranca no solo la espada, sino todo el brazo. Desearías no haberte fiado de aquel señor misterioso. Mueres.</p>\
+        <h1>FIN</h1>",
         
         {
            // heading: "Fin del Juego",
@@ -161,26 +190,26 @@ undum.game.situations = {
     ),
     esquivar2: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
         <p>Consigues esquivar a la bestia y le tomas la espalda, es tu momento.</p>\
         <p><a href='atacartrascrubrir'>Usas la espada para atacar</a></p>"
     ),
     cubrir2: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
         <p>El león queda aturtido al darse de bruces con el escudo, es tu momento.</p>\
         <p><a href='cubrir3'>Usas el escudo para cubirte</a></p>\
         <p><a href='atacartrascrubrir'>Usas la espada para atacar</a></p>"
     ),
     cubrir3: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif'  >\
         <p>Bien, te has cubierto de un mosquito, pero la bestia sigue ahí.</p>\
         <p><a href='atacar'>Usas la espada para atacar</a></p>"
     ),
     atacartrascrubrir: new undum.SimpleSituation(
         "<h1>Arena</h1>\
-        <img src='media/games/tutorial/gladiador_leon.jfif' height=”400” width=400” >\
+        <img  class='img-situation' src='media/img/gladiador_leon.jfif'>\
         <p>Das muerte a la bestia con la espada y pones fin al combate. El público aplaude \
         estruendósamente y te ovaciona sin parar. De pronto se hace el silencio, el emperador Victorius debe dedicir si eres digno de seguir con vida.</p>\
         <p>- ¿Cual es tu nombre, gladiador?</p>"

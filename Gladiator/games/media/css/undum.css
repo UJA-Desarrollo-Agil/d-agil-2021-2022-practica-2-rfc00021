@@ -6,6 +6,16 @@ body {
     background-attachment: fixed;
     overflow-y: scroll;
 }
+.img-situation {
+  width: 100%;
+}
+
+.dialogo {
+	font-style: italic;
+	padding-left: 2em;
+	padding-top: 1.2em;
+	padding-bottom: 1.2em;
+}
 
 /* Basic structure */
 #page {
