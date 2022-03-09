@@ -104,22 +104,17 @@ undum.game.situations = {
     celda: new undum.SimpleSituation(
         "<h1>Celda de Gladiadores </h1>\
         <img  class='img-situation' src='media/img/celda.jpg' >\
-        <p>El soldado Romano no da lugar a que tomes una decisión. Es demasiado tarde. Te immovila y junto a otros soldados te arrastran hasta la celda de gladiadores.\
+        <p>El soldado Romano no da lugar a que tomes una decisión. Es demasiado tarde. Te immoviliza y junto a otros soldados te arrastran hasta la celda de gladiadores.\
         La entrada que te regaló aquel señor era una entrada para gladiadores. Tendrás que combatir en las arenas del coliseo Romano cuando sea tu turno. Tras varios minutos de desesperación viendo\
         gladiadores salir y no volver, el guarda de la celda te llama para combatir. Eres el último.</p>\
         <p><a href='arena'>Sales a la arena</a></p>",
-       // {
-         //   exit: function(character, system, to) {
-           //     system.setQuality("espada", true);
-             //   system.setQuality("escudo", true);
-           // }
-       // }
+    
     ),
     arena: new undum.SimpleSituation(
         "<h1>Arena</h1>\
         <img  class='img-situation' src='media/img/gladiador_leon.jfif' >\
         <p>De rojo se tintan las arenas del Coliseo, cuya insmensidad supera toda espectativa. El público está eufórico. Al otro lado del coliseo, una compuerta se abre lentamente.\
-        Una bestia emerge de las profundidades y ruge hambrienta. Aprovechas la lejanía de la bestia para coger una espada y un \
+        Una bestia de enormes colmillos emerge de las profundidades y ruge hambrienta. Es el león mas grande que has visto nunca. Aprovechas la lejanía de la bestia para coger una espada y un \
         escudo que había en el suelo.\
         El león comienza a correr, tu quedas paralizado y en cuestión de segundos el león salta hacia ti.</p>\
         <p><a href='esquivar'>Esquivas</a></p>\
@@ -200,7 +195,7 @@ undum.game.situations = {
         "<h1>Arena</h1>\
         <img  class='img-situation' src='media/img/gladiador_leon.jfif'  >\
         <p>Bien, te has cubierto de un mosquito, pero la bestia sigue ahí.</p>\
-        <p><a href='atacar'>Usas la espada para atacar</a></p>"
+        <p><a href='atacartrascrubrir'>Usas la espada para atacar</a></p>"
     ),
     atacartrascrubrir: new undum.SimpleSituation(
         "<h1>Arena</h1>\
@@ -208,31 +203,28 @@ undum.game.situations = {
         <p>Das muerte a la bestia con la espada y pones fin al combate. El público aplaude \
         estruendósamente y te ovaciona sin parar. De pronto se hace el silencio, el emperador Victorius debe dedicir si eres digno de seguir con vida.</p>\
         <p class = 'dialogo'>- ¿Cual es tu nombre, gladiador?</p>\
-        <p><a href='./decir-nombre'>Decir nombre</a> </p>\
-        <p><a href='./no-decir-nombre'>No decir nombre</a> </p>",
-        {
-            
-            actions:{
-                'decir-nombre': function(character,system,action){
-                   
-                      system.write("<p class = 'dialogo'>- Mi nombre es " +
+        <p><a href='sinombre' class='transient'>Decir nombre</a> </p>\
+        <p><a href='nonombre' >No decir nombre</a> </p>",
+           
+    ),
+    sinombre: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img  class='img-situation' src='media/img/nombre.jpg'>\
+        <p class = 'dialogo'>- Mi nombre es " +
                       nombre +" y estoy aquí por error, yo no soy un gladiador, me estafaron en el forum, solo soy un ciudadano corriente</p><p>El emperador, sorprendido, ordena que se te compense\
                       económicamente y que te trasladen a un curandero inmediatamente. El público corea tu nombre a pulmón lleno.</a></p><p class= 'dialogo'>"+"¡¡"+ nombre + "!!  ¡¡" + nombre +"!!  ¡¡" + nombre + " !!</p>\
-                      <p><a href = 'casa'>Continuar</p>")
+                      <p><a href = 'casa'>Continuar</p>"
 
-    
-                 
-        },      'no-decir-nombre': function(character,system,action){
-            system.write("<p class = 'dialogo'>- ¿Cómo osas desobedecer al emperador?</p>\
-            <p>Enfurecido, el emperador extiende si brazo con el pulgar hacia arriba, indicando de este modo que no eres digno de seguir con vida.\
-            En ese momento, los mas de 100 arqueros situados a lo largo del coliseo disparan sus flechas contra ti. Has aprendido que más vale contestar\
-             cuando el emperador Victorius te hace una pregunta. Mueres</p>\
-            <h1>FIN</h1>")
-            
-        }
-        }
-        }
-            
+    ),
+    nonombre: new undum.SimpleSituation(
+        "<h1>Arena</h1>\
+        <img  class='img-situation' src='media/img/cesar.jpg'>\
+        <p class = 'dialogo'>- ¿Cómo osas desobedecer al emperador?</p>\
+            <p>Enfurecido, el emperador extiende si brazo con el pulgar hacia arriba, indicando ,de este modo, que no eres digno de seguir con vida.\
+            En ese momento, los más de 100 arqueros situados a lo largo del coliseo disparan sus flechas contra ti. Has aprendido que más vale contestar\
+             cuando el emperador Victorius te hace una pregunta. Mueres.</p>\
+            <h1>FIN</h1>"
+
     ),
     casa: new undum.SimpleSituation(
         "<h1>Hogar</h1>\
