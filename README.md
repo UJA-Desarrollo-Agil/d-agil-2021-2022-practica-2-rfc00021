@@ -37,7 +37,7 @@ https://trello.com/b/rDB1yjbr/practica-2
 #### Captura de pantalla del tablero en trello el martes día 8 de marzo
 ![Image text](https://github.com/UJA-Desarrollo-Agil/d-agil-2021-2022-practica-2-rfc00021/blob/desarrollo/Gladiator/games/media/img/Capturas/Captura2.PNG)
 
-###Captura de pantalla del tablero en trello al final, con todas las tareas terminadas.
+### Captura de pantalla del tablero en trello al final, con todas las tareas terminadas.
 ![Image text](https://github.com/UJA-Desarrollo-Agil/d-agil-2021-2022-practica-2-rfc00021/blob/desarrollo/Gladiator/games/media/img/Capturas/Captura4.PNG)
 
 ### 2.2 Telegram <a name="capturas-telegram"></a>
