@@ -23,6 +23,9 @@ var nombre;
 nombre = prompt(
     "Antes de comenzar, por favor, ingrese un nombre para su jugador/a. La historia transcurre en la antigua Roma: "
   );
+  if(nombre == null){
+      nombre = "Maximo Decimo Meridio";
+  }
 
 /* A variable that changes the options fade out speed. */
 undum.game.fadeSpeed = 1500
@@ -252,13 +255,16 @@ undum.game.start = "start";
 undum.game.qualities = {
    
     espada: new undum.OnOffQuality(
-        "Espada", {priority:"0001", group:'objeto'}
+        "Espada", {priority:"0002", group:'objeto'}
     ),
     escudo: new undum.OnOffQuality(
-        "Escudo", {priority:"0001", group:'objeto'}
+        "Escudo", {priority:"0003", group:'objeto'}
     ),
     brazo: new undum.OnOffQuality(
-        "-1 brazo", {priority:"0001", group:'objeto'}
+        "-1 brazo", {priority:"0004", group:'objeto'}
+    ),
+    name: new undum.OnOffQuality(
+        "Nombre: "+"<b>" + nombre + "</b>",{priority:"0001", group:'objeto'}
     )
 };
 
@@ -279,7 +285,9 @@ undum.game.qualityGroups = {
  * to configure the character at the start of play. */
 undum.game.init = function(character, system) {
  
-    system.setCharacterText("<p>Comienzas tu aventura</p>\
-    <p><strong>Nombre : " + nombre + "</strong></p>");
+    system.setCharacterText("<p>Comienzas tu aventura</p>");
+
+    system.setQuality("name",true);
+
 
 };
